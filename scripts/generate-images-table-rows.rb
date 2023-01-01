@@ -2,7 +2,7 @@
 
 puts "Generating markdown for image table"
 
-files = Dir["../images/*.jpg"]
+files = Dir["../docs/assets/img/*.jpg"]
 
 class Ep2
   attr_accessor :filename, :manufacturer, :side
@@ -29,15 +29,11 @@ end
 puts "Found files\n\t#{ files.join("\n\t") }"
 markdown = []
 
-back = "_back"
-front = "_front"
-start = "../images/ep2_"
-
 data = {}
 
 files.each{ |filepath| 
   ep2 = Ep2.new(filepath)
-  location = "./images/#{ep2.filename}"
+  location = "https://raw.githubusercontent.com/dellch/elrs-ep2-images/main/docs/assets/img/#{ep2.filename}"
   if !data.has_key?(ep2.manufacturer)
     data[ep2.manufacturer] = {}
   end
